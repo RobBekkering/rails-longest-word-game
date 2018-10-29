@@ -1,0 +1,16 @@
+<h1>Games#new</h1>
+<p>Find me in app/views/games/new.html.erb</p>
+
+<% @grid.each do |letter| %>
+<p id="letter"><%= letter %></p>
+<% end %>
+
+<% @start_time = Time.now %>
+
+<form action="/score" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :grid, @grid %>
+  <input type="text" name="guess" id="input-field">
+  <%= hidden_field_tag :start_time, @start_time %>
+  <input type="submit" id="submit">
+</form>
